@@ -47,6 +47,7 @@ jobs:
           role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
           role-external-id: ${{ secrets.AWS_ROLE_EXTERNAL_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          role-duration-seconds: 1200
           aws-region: ap-southeast-2
 
       - name: Login to Amazon ECR
