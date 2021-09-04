@@ -1,4 +1,4 @@
-# comp30022-it-project
+# MERN devops demo
 
 # Start Commands (all commands are run at project root)
 
