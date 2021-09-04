@@ -1,20 +1,16 @@
 services:
   base:
     build:
-      context: ./
-      dockerfile: ./Dockerfile
-    image: build-base
-  client:
-    depends_on:
-      - base
-    build:
-      context: ./
-      dockerfile: ./client/Dockerfile
-    image: build-client
+      context: .
+      dockerfile: ./Dockerfile.install-base
+    image: install-base
+  
   server:
     depends_on:
       - base
     build:
-      context: ./
-      dockerfile: ./server/Dockerfile
-    image: build-server
+      context: .
+      dockerfile: ./server/docker/Dockerfile.server-prod
+    image: server
+    ports:
+      - "8080:8080"

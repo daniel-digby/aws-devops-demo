@@ -1,0 +1,11 @@
+##
+## BASE INSTALL STAGE
+FROM node:lts AS build-base
+WORKDIR usr/src/
+COPY .yarn ./.yarn
+COPY .yarnrc.yml .
+COPY yarn.lock .
+COPY package.json .
+
+# copy and install all workspace packages
+RUN yarn plugin import workspace-tools
