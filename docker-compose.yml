@@ -1,9 +1,20 @@
 services:
-      build-backend:
-        build:
-          context: ./
-          dockerfile: ./server/Dockerfile
-      build-frontend:
-        build:
-          context: ./
-          dockerfile: ./client/Dockerfile
+  base:
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+    image: build-base
+  client:
+    depends_on:
+      - base
+    build:
+      context: ./
+      dockerfile: ./client/Dockerfile
+    image: build-client
+  server:
+    depends_on:
+      - base
+    build:
+      context: ./
+      dockerfile: ./server/Dockerfile
+    image: build-server
