@@ -1,0 +1,9 @@
+services:
+      build-backend:
+        build:
+          context: ./
+          dockerfile: ./server/Dockerfile
+      build-frontend:
+        build:
+          context: ./
+          dockerfile: ./client/Dockerfile
