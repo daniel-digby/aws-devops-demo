@@ -5,7 +5,7 @@ executors:
         auth:
           username: $DOCKERHUB_USER
           password: $DOCKERHUB_PASSWORD # context / project UI env-var reference
-    working_directory: /tmp
+    working_directory: /.
 
 jobs:
   install:
