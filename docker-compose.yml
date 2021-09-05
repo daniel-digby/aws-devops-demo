@@ -2,7 +2,7 @@ services:
   server:
     build:
       context: .
-      dockerfile: ./server/docker/Dockerfile.server
+      dockerfile: ./server/docker
       target: test-server
     image: server
     ports:
