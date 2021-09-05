@@ -40,6 +40,7 @@ export class CdkStack extends cdk.Stack {
                     "ecr:CompleteLayerUpload",
                     "ecr:BatchGetImage",
                     "ecs:DescribeServices",
+                    "ecs:UpdateService",
                     "iam:PassRole",
                     "ecs:RegisterTaskDefinition",
                     "ecr:InitiateLayerUpload",
