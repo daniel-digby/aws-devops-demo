@@ -17,8 +17,8 @@ jobs:
       # build and push Docker image
       - run: |
         TAG=0.1.$CIRCLE_BUILD_NUM
-        docker build --target test-server \
-                     -f server/docker/Dockerfile.server \
+        docker build -f server/docker/Dockerfile.server \
+                     --target test-server \
                      -t circleci-public/circleci-demo-docker:$TAG .
 
       - run: |
