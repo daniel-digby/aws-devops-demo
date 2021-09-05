@@ -16,6 +16,10 @@ jobs:
 
       # build and push Docker image
       - run: |
+        pwd
+      - run: |
+        ls
+      - run: |
           mkdir /home/circleci/project/reports/junit
       - run: |
           TAG=0.1.$CIRCLE_BUILD_NUM
