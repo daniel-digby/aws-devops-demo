@@ -16,6 +16,8 @@ jobs:
 
       # build and push Docker image
       - run: |
+        mkdir reports
+      - run: |
           TAG=0.1.$CIRCLE_BUILD_NUM
           docker build -f server/docker/Dockerfile.server \
                        --target test-server \
@@ -23,7 +25,7 @@ jobs:
       - run: |
           TAG=0.1.$CIRCLE_BUILD_NUM
           docker run circleci-public/circleci-demo-docker:$TAG \
-                    -v "$(pwd)"/reports:/reports
+                     --mount type=bind,source="$(pwd)"/reports,target=/reports
       - run: |
           pwd
       - run: |
