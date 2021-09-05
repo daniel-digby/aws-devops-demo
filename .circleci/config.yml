@@ -18,6 +18,7 @@ jobs:
       - run: |
           TAG=0.1.$CIRCLE_BUILD_NUM
           docker build -f server/docker/Dockerfile.server-prod \
+                       --target test-server \
                        -t circleci-public/circleci-demo-docker:$TAG .
           echo $DOCKER_PASSWORD | docker login -u $DOCKER_USER --password-stdin
           docker push circleCI-public/circleci-demo-docker:$TAG
