@@ -23,3 +23,8 @@ jobs:
       - run: |
           TAG=0.1.$CIRCLE_BUILD_NUM
           docker run circleci-public/circleci-demo-docker:$TAG
+
+      - store_test_results:
+        path: ./reports/junit/
+      - store_artifacts:
+        path: ./reports/junit
