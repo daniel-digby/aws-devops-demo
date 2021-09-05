@@ -42,7 +42,7 @@ jobs:
         id: wait-for-tests-passed
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          checkName: "tests-passed"
+          checkName: build_and_test
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
 
       - name: Checkout
