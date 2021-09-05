@@ -48,8 +48,6 @@ jobs:
           environment:
             NODE_ENV: production
           command: yarn workspace server build
-      - run: yarn workspace server start
-      - run: <Ctrl> + C
 
   test-frontend:
     docker:
