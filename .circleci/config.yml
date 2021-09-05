@@ -1,16 +1,11 @@
 version: 2.1
-executors:
-  demo-executor:
+jobs:
+  install:
     docker:
       - image: circleci/node
         auth:
           username: $DOCKERHUB_USER
           password: $DOCKERHUB_PASSWORD # context / project UI env-var reference
-    working_directory: /.
-
-jobs:
-  install:
-    executor: demo-executor
     steps:
       - checkout
       - run: yarn install
@@ -23,7 +18,11 @@ jobs:
             - .
 
   test-backend:
-    executor: demo-executor
+    docker:
+      - image: circleci/node
+        auth:
+          username: $DOCKERHUB_USER
+          password: $DOCKERHUB_PASSWORD # context / project UI env-var reference
     steps:
       - attach_workspace:
           # Must be absolute path or relative path from working_directory
