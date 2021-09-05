@@ -1,17 +1,32 @@
-jobs:
-  install:
+executors:
+  demo-executor:
     docker:
       - image: circleci/node
+        auth:
+          username: $DOCKERHUB_USER
+          password: $DOCKERHUB_PASSWORD # context / project UI env-var reference
+    working_directory: /tmp
 
+jobs:
+  install:
+    executor: demo-executor
     steps:
       - checkout
       - run: yarn install
+      - persist_to_workspace:
+          # Must be an absolute path, or relative path from working_directory. This is a directory on the container which is
+          # taken to be the root directory of the workspace.
+          root: .
+          # Must be relative path from root
+          paths:
+            - .
 
   test-backend:
-    docker:
-      - image: circleci/node
+    executor: demo-executor
     steps:
-      - checkout
+       - attach_workspace:
+          # Must be absolute path or relative path from working_directory
+          at: .
       - run: yarn workspace server test-ci
 
       - store_test_results:
