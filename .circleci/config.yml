@@ -20,5 +20,3 @@ jobs:
           docker build -f server/docker/Dockerfile.server \
                        --target test-server \
                        -t circleci-public/circleci-demo-docker:$TAG .
-          echo $DOCKER_PASSWORD | docker login -u $DOCKER_USER --password-stdin
-          docker push circleCI-public/circleci-demo-docker:$TAG
