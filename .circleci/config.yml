@@ -20,7 +20,7 @@ jobs:
       - run: |
           ls
       - run: |
-          mkdir /home/circleci/project/reports/junit
+          mkdir /home/circleci/project/reports/
       - run: |
           TAG=0.1.$CIRCLE_BUILD_NUM
           docker build -f server/docker/Dockerfile.server \
@@ -29,9 +29,9 @@ jobs:
       - run: |
           TAG=0.1.$CIRCLE_BUILD_NUM
           docker run circleci-public/circleci-demo-docker:$TAG \
-                    -v ~/reports/junit:/home/circleci/project/reports/junit
+                    -v ~/reports/:/home/circleci/project/reports/
 
       - store_test_results:
-          path: ./reports/junit/
+          path: ./reports/
       - store_artifacts:
-          path: ./reports/junit/
+          path: ./reports/
