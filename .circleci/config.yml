@@ -48,7 +48,7 @@ jobs:
           environment:
             NODE_ENV: production
           command: yarn workspace server build
-      - run: yarn workspaces focus server --production
+      - run: yarn workspaces focus server
       - run: yarn workspace server start
       - run: <Ctrl> + C
 
