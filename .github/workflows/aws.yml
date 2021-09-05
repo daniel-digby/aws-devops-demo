@@ -37,6 +37,22 @@ jobs:
     environment: production
 
     steps:
+      - name: Check commit status
+        id: commit-status
+        run: |
+          # Check the status of the Git commit
+          CURRENT_STATUS=$(curl --url https://api.github.com/repos/${{ github.repository }}/commits/${{ github.sha }}/status --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' | jq -r '.state');
+          echo "Current status is: $CURRENT_STATUS"
+          while [ "${CURRENT_STATUS^^}" = "PENDING" ]; 
+            do sleep 10; 
+            CURRENT_STATUS=$(curl --url https://api.github.com/repos/${{ github.repository }}/commits/${{ github.sha }}/status --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' | jq -r '.state');
+          done;
+          echo "Current status is: $CURRENT_STATUS"
+          if [ "${CURRENT_STATUS^^}" = "FAILURE" ]; 
+            then echo "Commit status failed. Canceling execution"; 
+            exit 1; 
+          fi
+
       - name: Checkout
         uses: actions/checkout@v2
 
@@ -64,7 +80,7 @@ jobs:
           # Build a docker container and
           # push it to ECR so that it can
           # be deployed to ECS.
-          docker build -f server/docker/Dockerfile.server \
+          DOCKER_BUILDKIT=1 docker build -f server/docker/Dockerfile.server \
                        --target production-server \
                        -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
