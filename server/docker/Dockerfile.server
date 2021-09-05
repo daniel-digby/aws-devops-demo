@@ -36,7 +36,7 @@ RUN yarn workspace server build
 ## SERVER TEST STAGE
 FROM build-server AS test-server
 
-CMD ["yarn", "workspace", "server", "test"]
+CMD ["yarn", "workspace", "server", "test-ci"]
 
 ##########################
 ## SERVER DEV STAGE

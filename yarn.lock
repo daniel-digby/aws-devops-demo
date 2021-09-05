@@ -9381,6 +9381,18 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"jest-junit@npm:^12.2.0":
+  version: 12.2.0
+  resolution: "jest-junit@npm:12.2.0"
+  dependencies:
+    mkdirp: ^1.0.4
+    strip-ansi: ^5.2.0
+    uuid: ^8.3.2
+    xml: ^1.0.1
+  checksum: 6a666b017eac77fd549a64ec68fda858d078e016405318684361392eac4c4d189a42f8dd9d9d1266ceab2245b1d9c7c63ea76827cd6429705ccdc1675b049d7d
+  languageName: node
+  linkType: hard
+
 "jest-leak-detector@npm:^26.6.2":
   version: 26.6.2
   resolution: "jest-leak-detector@npm:26.6.2"
@@ -14106,6 +14118,7 @@ resolve@^2.0.0-next.3:
     dotenv: ^10.0.0
     express: ^4.17.1
     jest: ^27.0.6
+    jest-junit: ^12.2.0
     path: ^0.12.7
     ts-jest: ^27.0.4
     ts-node: ^10.1.0
@@ -15830,7 +15843,7 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"uuid@npm:^8.3.0":
+"uuid@npm:^8.3.0, uuid@npm:^8.3.2":
   version: 8.3.2
   resolution: "uuid@npm:8.3.2"
   bin:
@@ -16512,6 +16525,13 @@ resolve@^2.0.0-next.3:
   version: 3.0.0
   resolution: "xml-name-validator@npm:3.0.0"
   checksum: b3ac459afed783c285bb98e4960bd1f3ba12754fd4f2320efa0f9181ca28928c53cc75ca660d15d205e81f92304419afe94c531c7cfb3e0649aa6d140d53ecb0
+  languageName: node
+  linkType: hard
+
+"xml@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "xml@npm:1.0.1"
+  checksum: 11b5545ef3f8fec3fa29ce251f50ad7b6c97c103ed4d851306ec23366f5fa4699dd6a942262df52313a0cd1840ab26256da253c023bad3309d8ce46fe6020ca0
   languageName: node
   linkType: hard
 
