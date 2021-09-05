@@ -9,9 +9,10 @@ jobs:
     steps:
       - checkout
       # ... steps for building/testing app ...
+
       - setup_remote_docker:
-        version: 19.03.13
-        # docker_layer_caching: true
+          version: 19.03.13
+          # docker_layer_caching: true
 
       # build and push Docker image
       - run: |
@@ -19,11 +20,6 @@ jobs:
           docker build -f server/docker/Dockerfile.server \
                        --target test-server \
                        -t circleci-public/circleci-demo-docker:$TAG .
-
       - run: |
+          TAG=0.1.$CIRCLE_BUILD_NUM
           docker run circleci-public/circleci-demo-docker:$TAG
-
-      - store_test_results:
-        path: ./reports/junit/
-      - store_artifacts:
-        path: ./reports/junit
