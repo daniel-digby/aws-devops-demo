@@ -48,7 +48,7 @@ CMD ["yarn", "workspace", "server", "dev"]
 ##########################
 ## SERVER PRODUCTION STAGE
 
-FROM build-server AS producution-server
+FROM build-server AS production-server
 
 # trim dev dependencies
 ENV NODE_ENV production
