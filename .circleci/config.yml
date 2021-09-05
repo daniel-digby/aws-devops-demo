@@ -22,5 +22,8 @@ jobs:
 workflows:
   version: 2
   build_and_test:
-    - build
-    - test
+    jobs:
+      - install
+      - test-backend:
+        requires:
+          - install
