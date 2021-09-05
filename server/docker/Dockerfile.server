@@ -2,7 +2,6 @@
 ## BASE INSTALL STAGE
 FROM node:lts AS install-base
 WORKDIR /usr/src/
-COPY ./reports ./reports
 COPY .yarn ./.yarn
 COPY .yarnrc.yml .
 COPY yarn.lock .
