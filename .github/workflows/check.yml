@@ -1,0 +1,52 @@
+on:
+  push:
+    branches:
+      - main
+
+name: tests-passed
+
+jobs:
+  deploy:
+    name: tests-passed
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install
+        uses: fountainhead/action-wait-for-check@v1.0.0
+        id: wait-for-install
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          checkName: "ci/circleci: install"
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Test Backend
+        uses: fountainhead/action-wait-for-check@v1.0.0
+        id: wait-for-test-backend
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          checkName: "ci/circleci: test-backend"
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Test Frontend
+        uses: fountainhead/action-wait-for-check@v1.0.0
+        id: wait-for-test-frontend
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          checkName: "ci/circleci: test-frontend"
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Build Backend
+        uses: fountainhead/action-wait-for-check@v1.0.0
+        id: wait-for-build-backend
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          checkName: "ci/circleci: build-backend"
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Build Frontend
+        uses: fountainhead/action-wait-for-check@v1.0.0
+        id: wait-for-build-frontend
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          checkName: "ci/circleci: build-frontend"
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
