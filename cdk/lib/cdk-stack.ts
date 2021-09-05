@@ -28,7 +28,6 @@ export class CdkStack extends cdk.Stack {
             assumedBy: new iam.ServicePrincipal("ecs-tasks.amazonaws.com"),
             roleName: "devops-demo-execution-role",
         });
-
         executionRole.addToPolicy(
             new iam.PolicyStatement({
                 effect: iam.Effect.ALLOW,
@@ -61,11 +60,11 @@ export class CdkStack extends cdk.Stack {
             }
         );
 
-        const container = TaskDefinition.addContainer("devops-demo", {
+        TaskDefinition.addContainer("devops-demo", {
             image: ecs.ContainerImage.fromRegistry("amazon/amazon-ecs-sample"),
         });
 
-        const service = new ecs.FargateService(this, "devops-demo", {
+        new ecs.FargateService(this, "devops-demo", {
             cluster: cluster,
             taskDefinition: TaskDefinition,
             serviceName: "devops-demo-task-definition",
