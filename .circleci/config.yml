@@ -16,8 +16,6 @@ jobs:
 
       # build and push Docker image
       - run: |
-          mkdir /home/circleci/project/reports/
-      - run: |
           TAG=0.1.$CIRCLE_BUILD_NUM
           docker build -f server/docker/Dockerfile.server \
                        --target test-server \
