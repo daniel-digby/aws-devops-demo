@@ -36,6 +36,9 @@ RUN yarn workspace server build
 ## SERVER TEST STAGE
 FROM build-server AS test-server
 
+# required for test reporting
+ENV JEST_JUNIT_OUTPUT_DIR: ./reports/junit
+
 CMD ["yarn", "workspace", "server", "test-ci"]
 
 ##########################
