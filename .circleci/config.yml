@@ -25,6 +25,6 @@ jobs:
           docker run circleci-public/circleci-demo-docker:$TAG
 
       - store_test_results:
-        path: ./reports/junit/
+          path: ./reports/junit/
       - store_artifacts:
-        path: ./reports/junit
+          path: ./reports/junit
