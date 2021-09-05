@@ -1,16 +1,9 @@
 services:
-  base:
-    build:
-      context: .
-      dockerfile: ./Dockerfile.install-base
-    image: install-base
-  
   server:
-    depends_on:
-      - base
     build:
       context: .
-      dockerfile: ./server/docker/Dockerfile.server-prod
+      dockerfile: ./server/docker/Dockerfile.server
+      target: test-server
     image: server
     ports:
       - "8080:8080"
