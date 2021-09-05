@@ -25,5 +25,5 @@ workflows:
     jobs:
       - install
       - test-backend:
-        requires:
-          - install
+          requires:
+            - install
