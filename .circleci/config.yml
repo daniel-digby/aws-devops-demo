@@ -16,9 +16,9 @@ jobs:
 
       # build and push Docker image
       - run: |
-        pwd
+          pwd
       - run: |
-        ls
+          ls
       - run: |
           mkdir /home/circleci/project/reports/junit
       - run: |
