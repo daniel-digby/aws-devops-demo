@@ -44,7 +44,13 @@ jobs:
       - attach_workspace:
           # Must be absolute path or relative path from working_directory
           at: .
-      - run: yarn workspace server build
+      - run:
+          environment:
+            NODE_ENV: production
+          command: yarn workspace server build
+      - run: yarn workspaces focus server --production
+      - run: yarn workspace server start
+      - run: <Ctrl> + C
 
   test-frontend:
     docker:
@@ -73,7 +79,10 @@ jobs:
       - attach_workspace:
           # Must be absolute path or relative path from working_directory
           at: .
-      - run: yarn workspace client build
+      - run:
+          environment:
+            NODE_ENV: production
+          command: yarn workspace client build
 
 workflows:
   version: 2
