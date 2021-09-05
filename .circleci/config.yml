@@ -22,7 +22,7 @@ jobs:
                        -t circleci-public/circleci-demo-docker:$TAG .
       - run: |
           TAG=0.1.$CIRCLE_BUILD_NUM
-          docker run circleci-public/circleci-demo-docker:$TAG
+          docker run circleci-public/circleci-demo-docker:$TAG -v ~/reports/junit:/home/circleci/project/reports/junit
 
       - store_test_results:
           path: ./reports/junit/
