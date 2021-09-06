@@ -36,8 +36,6 @@ RUN yarn workspace server build
 ## SERVER TEST STAGE
 FROM build-server AS test-server
 
-COPY ./reports ./reports
-
 CMD ["yarn", "workspace", "server", "test"]
 
 ##########################

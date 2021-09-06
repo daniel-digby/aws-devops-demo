@@ -1,0 +1,20 @@
+# use the lts version of node and name our build simple
+FROM node:lts AS simple
+
+# set the container directory we want to work in
+WORKDIR /usr/src/
+
+# copy package.json and package-lock.json
+COPY /package*.json .
+
+# install our packages and copy our files across
+RUN npm install
+COPY . .
+
+# open the port that we intend to use our app on
+EXPOSE 8080
+
+# this is the command that gets run when we start up the container
+CMD ["npm", "start"]
+
+# docker run -p 8080:8080 simple
