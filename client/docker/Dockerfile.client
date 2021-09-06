@@ -14,7 +14,6 @@ RUN yarn plugin import workspace-tools
 ## CLIENT INSTALL STAGE
 
 FROM install-base AS install-client
-WORKDIR .
 
 # copy and install all workspace packages
 COPY ./client/package.json ./client/package.json 
@@ -24,7 +23,6 @@ RUN yarn workspaces focus client
 ## CLIENT BUILD STAGE
 
 FROM install-client AS build-client
-WORKDIR .
 
 # copy source
 COPY ./client ./client
