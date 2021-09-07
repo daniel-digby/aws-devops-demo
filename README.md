@@ -8,7 +8,7 @@ Each dockerfile undergoes multiple build stages to efficiently cache shared depe
 
 # TESTING
 
-The .circleci directory holds a definition for the test pipeline that gets run. CircleCi has been configured to watch this repo and pick up the config.yml file in order to run th e pipeline on push. 
+The .circleci directory holds a definition for the test pipeline that gets run. CircleCi has been configured to watch this repo and pick up the config.yml file in order to run the pipeline on push. 
 
 The pipeline first installs dependencies then splits out into four in order to build and test both the client and the server.
 
